@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Распознавание картинки</title>
+    <style>
+        #image-preview {
+            max-width: 300px;
+            max-height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Распознавание картинки</h1>
+    <form id="upload-form" method="post" action="/predict" enctype="multipart/form-data">
+        <label for="file-input">Выберите файл:</label>
+        <input type="file" id="file-input" name="file">
+        <br>
+        <img id="image-preview" src="#" alt="Image preview">
+        <br>
+        <input type="submit" value="Распознать">
+    </form>
+
+    <script>
+        var fileInput = document.getElementById('file-input');
+        var imagePreview = document.getElementById('image-preview');
+
+        fileInput.addEventListener('change', function(event) {
+            var file = event.target.files[0];
+            var reader = new FileReader();
+
+            reader.onload = function(event) {
+                imagePreview.src = event.target.result;
+            };
+
+            reader.readAsDataURL(file);
+        });
+    </script>
+</body>
+</html>
