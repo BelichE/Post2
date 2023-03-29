@@ -10,8 +10,8 @@ class TestAPI(unittest.TestCase):
         # Проверяем, что ответ имеет код 200
         self.assertEqual(response.status_code, 200)
 
-        # Проверяем, что ответ содержит ожидаемый текст
-        self.assertIn('Результат', response.text)
+       # Проверяем, что ответ содержит ожидаемый заголовок
+        self.assertIn('Распознавание картинки', response.text)
 
 if __name__ == '__main__':
     unittest.main()
